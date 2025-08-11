@@ -1,3 +1,5 @@
+set(BOARD_FLASH_RUNNER jlink)
+
 board_runner_args(jlink "--device=nRF52840_xxAA" "--speed=4000")
 
 set(OPENOCD_NRF5_SUBFAMILY "nrf52")

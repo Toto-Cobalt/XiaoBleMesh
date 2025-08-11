@@ -28,7 +28,7 @@
 #error "Unsupported board: led1 devicetree alias is not defined"
 #endif
 
-#define LBS_LED DK_LED3
+#define LBS_LED DK_LED2
 #define LBS_BUTTON DK_BTN1_MSK
 
 static const struct bt_data ad[] = {

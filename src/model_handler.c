@@ -13,7 +13,7 @@
 #error "Unsupported board: led0 devicetree alias is not defined"
 #endif
 
-#define MESH_LED DK_LED2
+#define MESH_LED DK_LED3
 
 static void led_set(struct bt_mesh_onoff_srv *srv, struct bt_mesh_msg_ctx *ctx,
 		    const struct bt_mesh_onoff_set *set, struct bt_mesh_onoff_status *rsp);
