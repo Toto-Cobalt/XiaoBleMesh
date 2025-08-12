@@ -31,7 +31,7 @@
 #define LBS_LED DK_LED2
 #define LBS_BUTTON DK_BTN1_MSK
 
-static const struct bt_data ad[] = {
+static struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
 	BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, (sizeof(CONFIG_BT_DEVICE_NAME) - 1)),
 };
@@ -185,6 +185,12 @@ void lbs_handler_init(void)
 	/** Initiate and add LBS to the device service list. */
 	lbs_init();
 
+	char device_name[32];
+	bt_addr_le_t addr;
+	bt_id_get(&addr,NULL);
+	snprintf(device_name, sizeof(device_name), "MeshNode_%02x%02x",addr.a.val[4],addr.a.val[5]);
+	ad[1].data = (uint8_t *)device_name;
+	ad[1].data_len = strlen(device_name);
 	/** Start separate advertiser instance. This will allow two simountanious GATT
 	 *  connections to the device, one for Mesh and one for the LBS.
 	 */
